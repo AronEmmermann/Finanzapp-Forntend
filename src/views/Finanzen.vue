@@ -23,7 +23,7 @@ export default {
   name: 'Finanzen',
   data () {
     return {
-      gelder: [
+      gelder: [ /*
         {
           id: 1,
           bezeichnung: 'Breze',
@@ -35,7 +35,7 @@ export default {
           bezeichnung: 'urlaubsgeld',
           geldBetrag: 55,
           einnahme: true
-        }
+        }*/
       ]
     }
   },
@@ -47,6 +47,18 @@ export default {
         return require('../assets/ausgabe.png')
       }
     }
+  },
+  mounted() {
+    const requestOptions = {
+      method:'GET',
+      redirect: 'follow'
+    }
+    fetch('http://localhost:8080/api/v1/gelder', requestOptions)
+      .then(response => response.json())
+      .then(result => result.forEach(geld => {
+        this.gelder.push(geld)
+      }))
+      .catch(error => console.log('error', error))
   }
 }
 </script>
