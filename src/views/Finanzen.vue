@@ -49,11 +49,12 @@ export default {
     }
   },
   mounted() {
+    const endpoint = process.env.VUE_APP_BASE_URL + '/api/v1/gelder'
     const requestOptions = {
       method:'GET',
       redirect: 'follow'
     }
-    fetch('http://localhost:8080/api/v1/gelder', requestOptions)
+    fetch(endpoint, requestOptions)
       .then(response => response.json())
       .then(result => result.forEach(geld => {
         this.gelder.push(geld)
