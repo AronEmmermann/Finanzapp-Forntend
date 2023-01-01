@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent="handleSubmit">
     <label> Betrag:</label>
     <input type="number" required v-model="betrag">
     <label> Name:</label>
@@ -9,11 +9,10 @@
       <option value="einnahme"> Einnahme </option>
       <option value="ausgabe"> Ausgabe </option>
     </select>
-
-    <div class="submit">
-      <button> Betrag hinzufügen</button>
-    </div>
+    <button class="button">Bestätigen</button>
   </form>
+
+
 </template>
 
 <script>
@@ -24,6 +23,11 @@ export default {
       name: '',
       typ: ''
 
+    }
+  },
+  methods: {
+    handleSubmit() {
+      console.log('bestätigt')
     }
   }
 }
@@ -57,15 +61,18 @@ input, select {
   background: aliceblue;
   color: #555;
 }
-button {
-  background: #0b6dff;
-  border: 0;
-  padding: 10px 20px;
-  margin-top: 20px;
+.button {
+  background-color: #0b6dff;
+  border: none;
   color: white;
-  border-radius: 30px;
-}
-.submit {
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px ;
+  cursor: pointer;
+  border-radius: 16px;
   text-align: center;
 }
+
 </style>
