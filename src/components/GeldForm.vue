@@ -2,14 +2,18 @@
   <form @submit.prevent="handleSubmit">
     <label> Betrag:</label>
     <input type="number" required v-model="betrag">
+    <div v-if="betragError" class="error"> {{betragError}} </div>
+
     <label> Name:</label>
     <input type="text" required v-model="name">
+
     <label> Typ </label>
     <select v-model="typ">
       <option value="einnahme"> Einnahme </option>
       <option value="ausgabe"> Ausgabe </option>
     </select>
-    <button class="button">Bestätigen</button>
+
+    <button class="button" type="submit" @click="handleSubmit">Bestätigen</button>
   </form>
 
 
@@ -21,13 +25,32 @@ export default {
     return {
       betrag: '',
       name: '',
-      typ: ''
-
+      typ: false,
+      betragError: ''
     }
   },
   methods: {
-    handleSubmit() {
-      console.log('bestätigt')
+     handleSubmit() {
+       const endpoint = process.env.VUE_APP_BASE_URL + '/api/v1/gelder'
+
+       var myHeaders = new Headers();
+       myHeaders.append("Content-Type", "application/json");
+
+       var raw = JSON.stringify({
+         "name": this.name,
+         "geldBetrag": this.betrag,
+         "einnahme": this.typ
+       });
+
+       var requestOptions = {
+         method: 'POST',
+         headers: myHeaders,
+         body: raw,
+         redirect: 'follow'
+       };
+
+       fetch(endpoint, requestOptions)
+         .catch(error => console.log('error', error));
     }
   }
 }
@@ -73,6 +96,12 @@ input, select {
   cursor: pointer;
   border-radius: 16px;
   text-align: center;
+}
+.error {
+  color: darkred;
+  margin-top: 10px;
+  font-size: 0.8em;
+  font-weight: bold;
 }
 
 </style>
