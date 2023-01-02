@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form>
     <label> Betrag:</label>
     <input type="number" required v-model="betrag">
     <div v-if="betragError" class="error"> {{betragError}} </div>
@@ -9,11 +9,11 @@
 
     <label> Typ </label>
     <select v-model="typ">
-      <option value="einnahme"> Einnahme </option>
-      <option value="ausgabe"> Ausgabe </option>
+      <option value="true"> Einnahme </option>
+      <option value="false"> Ausgabe </option>
     </select>
 
-    <button class="button" type="submit" @click="handleSubmit">Bestätigen</button>
+    <button class="button" type="submit" @click.prevent="handleSubmit">Bestätigen</button>
   </form>
 
 
