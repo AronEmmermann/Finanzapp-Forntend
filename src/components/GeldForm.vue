@@ -1,26 +1,51 @@
 <template>
-  <form>
-    <label> Betrag:</label>
-    <input type="number" required v-model="betrag">
-    <div v-if="betragError" class="error"> {{betragError}} </div>
+<h1> Dein Konto</h1>
 
-    <label> Name:</label>
-    <input type="text" required v-model="name">
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-success sticky-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    +
+  </button>
 
-    <label> Typ </label>
-    <select v-model="typ">
-      <option value="true"> Einnahme </option>
-      <option value="false"> Ausgabe </option>
-    </select>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <label> Betrag:</label>
+            <input type="number" required v-model="betrag">
+            <div v-if="betragError" class="error"> {{betragError}} </div>
 
-    <button class="button" type="submit" @click.prevent="handleSubmit">Bestätigen</button>
-  </form>
+            <label> Name:</label>
+            <input type="text" required v-model="name">
 
+            <label> Typ </label>
+            <select v-model="typ">
+              <option value="true"> Einnahme </option>
+              <option value="false"> Ausgabe </option>
+            </select>
 
+            <button class="button" type="submit" @click.prevent="handleSubmit">Bestätigen</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+
+
 export default {
+
   data() {
     return {
       betrag: '',
@@ -84,6 +109,12 @@ input, select {
   background: aliceblue;
   color: #555;
 }
+r {
+  color: darkred;
+  margin-top: 10px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
 .button {
   background-color: #0b6dff;
   border: none;
@@ -92,16 +123,24 @@ input, select {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  margin-top: 20px ;
   cursor: pointer;
-  border-radius: 16px;
+  border-radius: 30px;
   text-align: center;
+  margin-top: 20px;
 }
-.error {
-  color: darkred;
-  margin-top: 10px;
-  font-size: 0.8em;
-  font-weight: bold;
+.sticky-button{
+  background-color: #0b6dff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 30px;
+  text-align: center;
+  margin: 250px;
 }
+
 
 </style>
