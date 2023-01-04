@@ -4,11 +4,11 @@
     <div class="row row-cols-1 row-cols-md-4 g-4">
       <div class="col" v-for="geld in gelder" :key="geld.id">
         <div class="card h-100">
-          <img :src="getBild(geld)" class="card-img-top" :alt="geld.bezeichnung +' '+ geld.geldBetrag">
+          <img :src="getBild(geld)" class="card-img-top" :alt="geld.name +' '+ geld.geldBetrag">
           <div class="card-body">
-            <h5 class="card-title">{{ geld.bezeichnung }} {{ geld.geldBetrag }}</h5>
+            <h5 class="card-title">{{ geld.name }} {{ geld.geldBetrag }}</h5>
             <p class="card-text">
-              Geld wurde für {{ geld.bezeichnung }} {{geld.einnahme ? 'eingenommen' : 'ausgegeben'}} es waren {{ geld.geldBetrag }} Euro.
+              Geld wurde für {{ geld.name }} {{geld.einnahme ? 'eingenommen' : 'ausgegeben'}} es waren {{ geld.geldBetrag }} Euro.
             </p>
           </div>
         </div>
