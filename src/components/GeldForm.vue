@@ -1,5 +1,4 @@
 <template>
-<h1> Dein Konto</h1>
 
   <!-- Button trigger modal -->
   <button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -29,9 +28,9 @@
               <option value="false"> Ausgabe </option>
             </select>
           </form>
+          <button class="button" type="submit" @click.prevent="handleSubmit">Bestätigen</button>
         </div>
         <div class="modal-footer">
-          <button class="button" type="submit" @click.prevent="handleSubmit">Bestätigen</button>
         </div>
       </div>
     </div>
@@ -78,11 +77,11 @@ export default {
 
 <style>
 form {
-  max-width: 420px;
-  margin: 30px auto;
+  max-width: 350px;
+  margin: 10px auto;
   background: aliceblue;
   text-align: left;
-  padding: 40px;
+  padding: 10px;
   border-radius: 10px;
 }
 label {
@@ -96,7 +95,7 @@ label {
 }
 input, select {
   display:block;
-  padding: 10px 6px;
+  padding: 1px 6px;
   width: 100%;
   box-sizing: border-box;
   border: none;
@@ -115,7 +114,6 @@ input, select {
   margin: 20px;
   cursor: pointer;
   border-radius: 30px;
-  text-align: center;
 }
 .error {
   color: darkred;
@@ -131,12 +129,23 @@ input, select {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  margin: 250px;
+  margin: 50px;
   border-radius: 50%;
 }
 .modal-title{
-  text-align: center;
+  margin-left: 100px;
+  font-size: 2em;
+}
+.modal-header{
+  background-color: aliceblue;
+}
+.modal-body{
+  background-color: aliceblue;
 }
 
+.modal-content{
+  width: 450px;
+  height: 250px;
+}
 
 </style>

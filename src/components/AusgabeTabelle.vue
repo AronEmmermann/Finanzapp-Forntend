@@ -24,8 +24,6 @@ export default {
       gelder: []
     }
   },
-  methods() {
-  },
   mounted() {
     const endpoint = process.env.VUE_APP_BASE_URL + '/api/v1/gelder'
     const requestOptions = {
