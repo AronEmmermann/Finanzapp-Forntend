@@ -41,5 +41,7 @@ export default {
 </script>
 
 <style>
-
+.table {
+  margin-top: 30px;
+}
 </style>
