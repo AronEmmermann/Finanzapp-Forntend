@@ -14,7 +14,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form  >
             <label> Betrag:</label>
             <input type="number" required v-model="betrag">
             <div v-if="betragError" class="error"> {{betragError}} </div>
@@ -28,7 +28,9 @@
               <option value="false"> Ausgabe </option>
             </select>
           </form>
-          <button class="button" type="submit" @click.prevent="handleSubmit">Bestätigen</button>
+          <button class="button" type="submit" data-bs-dismiss="modal" @click.prevent="validateBetrag">Bestätigen
+
+          </button>
         </div>
         <div class="modal-footer">
         </div>
@@ -42,6 +44,7 @@ export default {
 
   data() {
     return {
+      errors: [],
       betrag: '',
       name: '',
       typ: false,
@@ -49,6 +52,10 @@ export default {
     }
   },
   methods: {
+    validateBetrag() {
+      this.betragError = this.betrag !== 0 ? this.handleSubmit() :
+        'Betrag darf nicht 0 sein'
+    },
      handleSubmit() {
        const endpoint = process.env.VUE_APP_BASE_URL + '/api/v1/gelder'
 

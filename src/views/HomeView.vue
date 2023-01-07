@@ -4,7 +4,7 @@ this.refs$input
   <div class="home">
     <h1 class="h1"> Dein Konto</h1>
     <div v-for="geld in gelder.slice(0, 1)" :key="geld.id" >
-      <h2 class="h2">{{showSum(geld,gelder)}}</h2>
+      <h1 class="h2">{{showSum(geld,gelder)}} €</h1>
       </div>
 
 
@@ -55,9 +55,9 @@ export default {
 
 <style>
 .h1 {
-  margin-top: 30px;
+  padding-top: 70px;
 }
 .h2 {
-  margin-top: 30px;
+  padding-top: 50px;
 }
 </style>
