@@ -6,7 +6,8 @@
   </button>
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+       aria-hidden="true" >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -14,13 +15,16 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form  >
+          <form v-if="nameEmptyError === '' " >
             <label> Betrag:</label>
             <input type="number" required v-model="betrag">
-            <div v-if="betragError" class="error"> {{betragError}} </div>
+            <div v-if="betragEmptyError" class="error"> {{ betragEmptyError }}</div>
+
 
             <label> Name:</label>
             <input type="text" required v-model="name">
+            <div v-if="nameEmptyError" class="error"> {{ nameEmptyError }}</div>
+
 
             <label> Typ </label>
             <select v-model="typ">
@@ -28,9 +32,10 @@
               <option value="false"> Ausgabe </option>
             </select>
           </form>
-          <button class="button" type="submit" data-bs-dismiss="modal" @click.prevent="validateBetrag">Bestätigen
+            <button class="button" type="submit"  @click.prevent="validateBetrag" id="close">
+              Bestätigen
+            </button>
 
-          </button>
         </div>
         <div class="modal-footer">
         </div>
@@ -48,13 +53,24 @@ export default {
       betrag: '',
       name: '',
       typ: false,
-      betragError: ''
+      betragEmptyError: '',
+      nameEmptyError: '',
     }
   },
   methods: {
+
     validateBetrag() {
-      this.betragError = this.betrag !== 0 ? this.handleSubmit() :
-        'Betrag darf nicht 0 sein'
+      if (this.betrag === '' || this.betrag === 0) {
+        this.betragEmptyError = 'Betrag muss einen Wert haben'
+      }
+      else if (this.name === '') {
+        this.nameEmptyError = 'Name darf nicht leer sein'
+      }
+      else {
+        this.handleSubmit()
+      }
+
+
     },
      handleSubmit() {
        const endpoint = process.env.VUE_APP_BASE_URL + '/api/v1/gelder'
