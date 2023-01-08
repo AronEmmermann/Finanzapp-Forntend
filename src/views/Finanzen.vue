@@ -6,7 +6,7 @@
         <div class="card h-100">
           <img :src="getBild(geld)" class="card-img-top" :alt="geld.name +' '+ geld.geldBetrag">
           <div class="card-body">
-            <h5 class="card-title">{{ geld.name }} {{ geld.geldBetrag }}</h5>
+            <h5 class="card-title">{{ geld.name }}: {{ geld.geldBetrag }}€</h5>
             <p class="card-text">
               Geld wurde für {{ geld.name }} {{geld.einnahme ? 'eingenommen' : 'ausgegeben'}} es waren {{ geld.geldBetrag }} Euro.
             </p>

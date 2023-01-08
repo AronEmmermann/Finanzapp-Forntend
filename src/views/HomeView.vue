@@ -54,6 +54,8 @@ export default {
 </script>
 
 <style>
+
+
 .h1 {
   padding-top: 70px;
   color: white;
