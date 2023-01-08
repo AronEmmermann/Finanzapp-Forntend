@@ -1,7 +1,10 @@
 <template>
-  <navbar></navbar>
-  <router-view/>
+  <div class="page">
 
+  <navbar></navbar>
+
+  <router-view/>
+  </div>
 </template>
 
 <script>
@@ -34,5 +37,9 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+.page {
+  background: linear-gradient(rgba(37, 169, 255, 0.6), white);
+
 }
 </style>

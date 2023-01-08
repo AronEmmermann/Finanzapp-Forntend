@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>Deine Geldflüße</h1>
+    <h1 class="h1-1">Deine Geldflüße</h1>
     <ausgabe-tabelle/>
   </div>
 </template>
@@ -16,3 +16,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.h1-1 {
+  color: rgba(0, 59, 77, 1);
+  margin-top: 30px;
+}
+</style>

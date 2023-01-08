@@ -108,7 +108,7 @@ form {
   border-radius: 10px;
 }
 label {
-  color: #aaa;
+  color: rgba(0, 59, 77, 1);
   display: inline-block;
   margin: 25px 0 15px;
   font-size: 0.6em;
@@ -124,10 +124,10 @@ input, select {
   border: none;
   border-bottom: 1px solid;
   background: aliceblue;
-  color: #555;
+  color: rgba(0, 59, 77, 1);
 }
 .button {
-  background-color: #0b6dff;
+  background-color: rgba(37, 169, 255, 1);
   border: none;
   color: white;
   padding: 10px 20px;
@@ -145,7 +145,8 @@ input, select {
   font-weight: bold;
 }
 .btn-primary{
-  background-color: #0b6dff;
+  background-color:rgba(37, 169, 255, 1);
+  font-weight: 600;
   border: none;
   color: white;
   padding: 12px 20px;
@@ -158,6 +159,7 @@ input, select {
 .modal-title{
   margin-left: 100px;
   font-size: 2em;
+  color: rgba(0, 59, 77, 1)
 }
 .modal-header{
   background-color: aliceblue;

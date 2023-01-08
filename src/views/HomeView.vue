@@ -1,14 +1,14 @@
 this.refs$input
 
 <template>
+  <div class="center">
   <div class="home">
     <h1 class="h1"> Dein Konto</h1>
     <div v-for="geld in gelder.slice(0, 1)" :key="geld.id" >
       <h1 class="h2">{{showSum(geld,gelder)}} €</h1>
       </div>
-
-
-    <geld-form/>
+  <geld-form/>
+  </div>
   </div>
 </template>
 
@@ -56,8 +56,27 @@ export default {
 <style>
 .h1 {
   padding-top: 70px;
+  color: white;
 }
 .h2 {
   padding-top: 50px;
+  color: white;
 }
+.center {
+  background: rgba(37, 169, 255, .4);
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+}
+.home {
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 </style>
