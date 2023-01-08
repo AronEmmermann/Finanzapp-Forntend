@@ -14,7 +14,7 @@
       <th scope="row">{{geld.id}}</th>
       <td>{{ geld.geldBetrag }}</td>
       <td>{{geld.name}}</td>
-      <td><delete-button/></td>
+      <td><button type="button" class="delete" v-on:click="deleteBetrag(geld.id)"> x </button></td>
     </tr>
     </tbody>
   </table>
@@ -22,15 +22,27 @@
 </template>
 
 <script>
-import DeleteButton from '@/components/DeleteButton.vue'
+
 export default {
-  components: {
-    DeleteButton
-  },
   data () {
     return {
+      id: '',
       gelder: []
     }
+  },
+  methods: {
+    deleteBetrag(id) {
+      const endpoint = process.env.VUE_APP_BASE_URL + '/api/v1/gelder/' + id
+      const requestOptions = {
+        method: 'DELETE',
+        redirect: 'follow'
+      };
+
+      fetch(endpoint, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    },
   },
   mounted() {
     const endpoint = process.env.VUE_APP_BASE_URL + '/api/v1/gelder'
@@ -55,5 +67,17 @@ export default {
   align-content: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.delete {
+  background-color: rgba(37, 169, 255, 1);;
+  color: white;
+  font-weight: 600;
+  padding: 2px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 50%;
+  border: none;
 }
 </style>

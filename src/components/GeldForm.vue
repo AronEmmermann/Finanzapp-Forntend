@@ -15,7 +15,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form v-if="nameEmptyError === '' " >
+          <form  >
             <label> Betrag:</label>
             <input type="number" required v-model="betrag">
             <div v-if="betragEmptyError" class="error"> {{ betragEmptyError }}</div>
